@@ -1,7 +1,7 @@
 avrTinyBootloader
 =================
-Homepage: https://sperka.online
-Description [PL]: https://blog.sperka.online/2019/09/uboot-avrtiny-bootloader-dla-attiny13/
+Homepage: https://sperka.online<br />
+Description [PL]: https://blog.sperka.online/2019/09/uboot-avrtiny-bootloader-dla-attiny13/<br />
 Description [EN]: https://blog.sperka.online/en/2019/09/uboot-avrtiny-bootloader-for-attiny13/
 
 Simple bootloader for tiniest AVR microcontrollers (like ATtiny13, etc). Without EEPROM programming capabilities, it takes only **160 bytes** (80 words!). For communication it uses software UART fed through single wire (half-duplex).
