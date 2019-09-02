@@ -1,4 +1,5 @@
 import serial
+from time import sleep
 import sys
 
 # "CONSTANTS"
@@ -62,8 +63,11 @@ with serial.Serial(sys.argv[2], 9600, timeout=2) as ser:
 		for i in range(PAGES_AVAILABLE):
 			ser.write(bytes([0x50])) # Write P letter for flash programming mode
 			ser.flush()
-			ser.write(getChunk(flashBin, i))
-			ser.flush()
+			for b in getChunk(flashBin, i):
+				ser.write(bytes([b]))
+				ser.flush()
+				sleep(0.002) # IF THERE ARE ERRORS DURING PROGRAMMING, INCREASE IT A BIT
+
 			resp = ser.read(FLASH_PAGE_BYTES + 4)
 			if (resp[-1] == 89):
 				print(format(i * FLASH_PAGE_BYTES, '03x') + "..." + format((i + 1) * FLASH_PAGE_BYTES, '03x') + ": ACK")
